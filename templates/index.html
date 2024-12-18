@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Universe{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="title">Patrick Hinson</h1>
+    <p class="tagline">Data Scientist<br></p>
+
+    <nav class="nav-links">
+        <a href="{{ url_for('bio') }}" class="btn">About Me</a>
+        <a href="{{ url_for('experience') }}" class="btn">Experience</a>
+        <a href="{{ url_for('projects') }}" class="btn">Projects</a>
+        <a href="{{ url_for('contact') }}" class="btn">Contact</a>
+    </nav>
+</div>
+{% endblock %}
