@@ -4,64 +4,24 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="section-title">About Me 🌠</h1>
+    <h1 class="section-title">About Me</h1>
     <div class="bio-content">
-        <!-- Personal Bio -->
-        <section class="personal-bio">
-            <h2>Who Am I?</h2>
-            <p>
-                <!-- Add your personal introduction here -->
-                Hello! I'm <strong>[Your Name]</strong>, a passionate [Your Profession or Role] with a love for [Your Interests or Goals].
-                I specialize in [Your Skills or Expertise] and enjoy working on [Fun Projects, Work, or Goals].
-            </p>
-        </section>
-
-        <!-- Education Section -->
-        <section class="education">
-            <h2>Education 🎓</h2>
-            <ul>
-                <li>
-                    <strong>[Degree, Major]</strong> — [University Name], [Year of Graduation]
-                </li>
-                <li>
-                    <strong>[Another Degree, Major]</strong> — [University Name], [Year of Graduation]
-                </li>
-            </ul>
-        </section>
-
-        <!-- Skills Section -->
-        <section class="skills">
-            <h2>Skills 🛠️</h2>
-            <ul class="skills-list">
-                <li>[Skill 1]</li>
-                <li>[Skill 2]</li>
-                <li>[Skill 3]</li>
-                <li>[Skill 4]</li>
-                <li>[Skill 5]</li>
-            </ul>
-        </section>
-
-        <!-- Fun Facts Section -->
-        <section class="fun-facts">
-            <h2>Fun Facts 🌟</h2>
-            <ul>
-                <li>I built my first [Project/Tool] at the age of [Age or Year].</li>
-                <li>I love [Hobby/Passion].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-                <li>My favorite [Topic/Technology] is [Specific Example].</li>
-            </ul>
-        </section>
+        <div style="display: flex; align-items: flex-start;">
+            <!-- Personal Bio -->
+            <section class="personal-bio" style="flex: 2; padding-right: 100px;">
+                <h2>Who Am I?</h2>
+                <p>
+                    Hello! I'm Patrick Hinson, a Data Scientist with a strong background in machine learning, statistical modeling, and large-scale data analysis.
+                    After double majoring in Statistics with a concentration in Econometrics and Computer Science from the University of Virginia in 2021, I began my career as a Data Scientist 
+                    at the MITRE Corporation. Went on to get my M.S. in Data Science from Johns Hopkins University while working at MITRE and transitioning to working on <a href="https://my.uscis.gov" target="_blank" rel="noopener" style="color: #fff8e7">my.uscis.gov</a>.
+                    Outside of work, I enjoy rock climbing, weightlifting, and exploring, whether it be wandering around my home city of Washington D.C, traveling abroad (I love mountains, and the D.C. Metro area does not have anything larger than big hills!), or surfing the internet. I am particularly interested in the spaces of biology, artificial intelligence, and their intersection!
+                    I try to stay up to date with traditional sports and esports alike. Along with sports, I love to think about the underlying systems that influence the things that I encounter day and how they can be modeled.   
+                </p>
+            </section>
+            <div style="flex-shrink: 0;">
+                <img src="{{ url_for('static', filename='images/patrick.JPG') }}" alt="Patrick Hinson" style="max-width: 450px; height: auto; border-radius: 8px; margin-top: 20px;">
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

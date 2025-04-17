@@ -244,7 +244,7 @@ body {
 
 .bio-content {
     text-align: left;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     line-height: 1.8;
     font-size: 1.1rem;
@@ -396,13 +396,20 @@ body {
     padding-bottom: 0.5rem;
 }
 
-.job, .volunteer {
+.job, .tech-stack {
     margin-bottom: 1.5rem;
 }
 
-.job h3, .volunteer h3 {
+.job h3, .tech-stack h3 {
     font-size: 1.5rem;
     color: #00d4ff;
+    text-align: left;
+}
+
+.job p, .tech-stack p,
+.job li, .tech-stack li,
+.job h2, .tech-stack h2 {
+    text-align: left;
 }
 
 .experience-content ul {
@@ -580,4 +587,23 @@ body {
 
 .contact-link:hover {
     color: #00ffff;
+}
+
+.welcome-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1000;
+}
+.welcome-overlay h1 {
+    font-size: 4rem;
+    color: #00d4ff;
+    text-shadow: 0 0 10px #00d4ff;
+    margin-bottom: 0.5rem;
+}
+.welcome-overlay p {
+    font-size: 0.8rem;
+    color: #ffffff;
 }

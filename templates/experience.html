@@ -4,62 +4,65 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="section-title">Professional Experience 🚀</h1>
+    <h1 class="section-title">Professional Experience and Tech Stack</h1>
     <div class="experience-content">
         <!-- Work Experience Section -->
+        <h2>Professional Experience</h2>
         <section class="work-experience">
-            <h2>Work Experience</h2>
             <div class="job">
-                <h3>[Job Title]</h3>
-                <p><strong>[Company Name]</strong> — [Start Date] to [End Date or Present]</p>
+                <h3>Data Scientist</h3>
+                <p><strong>USCIS</strong> — March 2024 to Present</p>
                 <ul>
-                    <li>[Responsibility or Achievement 1]</li>
-                    <li>[Responsibility or Achievement 2]</li>
-                    <li>[Responsibility or Achievement 3]</li>
+                    <p>I am currently helping to maintain and improve <a href="https://my.uscis.gov" target="_blank" rel="noopener" style="color: #fff8e7">my.uscis.gov</a>. Due to the public nature of my work, I will refrain from getting into deatils about my expereince here, but I am always happy to chat and talk more about the details privately!</p>
                 </ul>
             </div>
             <div class="job">
-                <h3>[Job Title]</h3>
-                <p><strong>[Company Name]</strong> — [Start Date] to [End Date or Present]</p>
+                <h3>Intermediate Data Scientist</h3>
+                <p><strong>The MITRE Corporation</strong> — August 2021 to March 2024</p>
                 <ul>
-                    <li>[Responsibility or Achievement 1]</li>
-                    <li>[Responsibility or Achievement 2]</li>
-                    <li>[Responsibility or Achievement 3]</li>
+                    <p>At MITRE, I worked primarily on Biology research. I lead the end-to-end technical design and implementation of a CRISPR Edit Detection AI Algorithm which I presented at the 2022 
+                        <a href="https://www.ashg.org/" target="_blank" rel="noopener" style="color: #fff8e7">
+                            American Society of Human Genetics Annual Conference
+                          </a> and currently have a patent pending for the method. (Abstract on page 1489 <a href="https://www.ashg.org/wp-content/uploads/2022/09/ASHG2022-PosterAbstracts.pdf" target="_blank" rel="noopener" style="color: #fff8e7">
+                            here</a>)
+                    I leveraged MITRE's high powered cloud computing system to build and maintain biological data pipelines, using a suite of CLI/python/R tools.
+                    I developed frontend prototypes using Javascript and Flask (The framework this website uses!) Also, check out the episode of the <a href="https://open.spotify.com/episode/469nwh0FqfA67pN9c9Aq5u?si=2bd5be3d726042ee" target="_blank" rel="noopener" style="color: #fff8e7">
+                        MITRE's Tech Future's Podcast
+                      </a> that I hosted discussing Bayesian Conformal Sets!</p>
+                </ul>
+            </div>
+            <div class="job">
+                <h3>Researcher</h3>
+                <p><strong>University of Virginia School of Medicine</strong> — May 2020 to September 2021</p>
+                <ul>
+                    <p>While I was finishing up undergrad, I had the pleasure of working under <a href="https://globalstudies.as.virginia.edu/people/josh-colston" target="_blank" rel="noopener" style="color: #fff8e7">
+                        Josh Colston
+                      </a> to work with him and a team to produce the following papers:</p>
+                      <li>  <a href="https://europepmc.org/article/med/36096405" target="_blank" rel="noopener" style="color: #fff8e7">
+                        Enteropathy Markers for Metabolic Syndrome (The American Journal of Tropical Medicine and Hygiene)
+                      </a> which I produced visualizations for. </li>
+                      <li>  <a href="https://pubmed.ncbi.nlm.nih.gov/36437857/" target="_blank" rel="noopener" style="color: #fff8e7">
+                        Effect of Hydrometeorological Factors on COVID-19 Spread (IJD Regions)
+                      </a> which I did data pipelining, modeling, and visualizations for using Python and R. </li>
+                      <li>  <a href="https://www.nature.com/articles/s41597-023-02276-y/" target="_blank" rel="noopener" style="color: #fff8e7">
+                        Unified COVID-19 Dataset (Nature Data)
+                      </a> where I assisted with data pipelining work for South America.</li>
                 </ul>
             </div>
         </section>
 
         <!-- Volunteer Experience Section -->
-        <section class="volunteer-experience">
-            <h2>Volunteer Experience 🤝</h2>
-            <div class="volunteer">
-                <h3>[Role]</h3>
-                <p><strong>[Organization Name]</strong> — [Start Date] to [End Date]</p>
-                <ul>
-                    <li>[Contribution or Achievement 1]</li>
-                    <li>[Contribution or Achievement 2]</li>
-                </ul>
+        <section class="tech-stack">
+            <h2>Tech Stack</h2>
+            <div class="Tech Stack">
+                <p><strong>Python</strong> — Pytorch, Tensorflow/Keras, OpenAI, pandas, numpy, Flask, scikit-learn, beautiful soup, matplotlib, seaborn, streamlit and more!</p>
+                <p><strong>R</strong> — Primarily ggplot2 and various other statistical/bioinformatics packages.</p>
+                <p><strong>All other technologies: </strong> — SQL (Oracle, Postgres), Databricks, High Performance Cloud Computing, Tableau, Javascript, C++, Java.</p>
+                <br>
+                <p>*There's many other technologies that I've dabbled in but have not included here, I remain curious and am always trying new stuff!</p>
             </div>
         </section>
 
-        <!-- Certifications Section -->
-        <section class="certifications">
-            <h2>Certifications 📜</h2>
-            <ul>
-                <li><strong>[Certification Name]</strong> — [Issuing Organization], [Year]</li>
-                <li><strong>[Certification Name]</strong> — [Issuing Organization], [Year]</li>
-            </ul>
-        </section>
-
-        <!-- Achievements Section -->
-        <section class="achievements">
-            <h2>Key Achievements 🌟</h2>
-            <ul>
-                <li>[Achievement 1: Brief Description]</li>
-                <li>[Achievement 2: Brief Description]</li>
-                <li>[Achievement 3: Brief Description]</li>
-            </ul>
-        </section>
     </div>
 </div>
 {% endblock %}
