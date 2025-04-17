@@ -25,18 +25,18 @@ body {
 }
 
 .stars {
-    background: url('https://i.imgur.com/0Dbl6gO.png') repeat;
+    background: transparent;
     animation: move-stars 50s linear infinite;
 }
 
 .twinkling {
-    background: url('https://i.imgur.com/MpVdjIX.png') repeat;
+    background: transparent;
     animation: twinkle 5s infinite alternate;
     opacity: 0.6;
 }
 
 .planets {
-    background: url('https://i.imgur.com/o8nX9QS.png') no-repeat center;
+    background: transparent;
     background-size: contain;
     animation: float 10s ease-in-out infinite;
 }
