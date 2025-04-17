@@ -22,5 +22,9 @@ def projects():
 def contact():
     return render_template('contact.html')
 
+@app.route('/favicon.ico')
+def favicon():
+    return '', 204
+
 if __name__ == '__main__':
     app.run(debug=False)
