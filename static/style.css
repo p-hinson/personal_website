@@ -214,7 +214,7 @@ body {
     background: radial-gradient(circle, #ffffff 30%, transparent 70%);
     border-radius: 50%;
     box-shadow: 0 0 3px 1px #ffffff; /* Smaller glow */
-    animation: twinkle-and-fade 1.618s ease-out forwards;
+    animation: twinkle-and-fade 6.472s ease-out forwards;
     pointer-events: none; /* Ensures clicks pass through the star */
     z-index: 1000;
 }
