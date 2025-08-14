@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Universe{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Starry Background -->
+    <div class="stars"></div>
+    <div class="shooting-stars"></div>
+
+    <!-- Centered Home Button with Earth Emoji -->
+    <a href="{{ url_for('home') }}" class="home-button">🌍</a>
+
+    <!-- Page-Specific Content -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Shooting Stars Script -->
+    <!-- Click Event Script -->
+    <script>
+        // Function to create a twinkling star at the cursor position
+        function createTwinklingStar(event) {
+            // Create star element
+            const star = document.createElement('div');
+            star.classList.add('click-star');
+
+            // Position the star at the cursor
+            star.style.left = `${event.clientX}px`;
+            star.style.top = `${event.clientY}px`;
+
+            // Append the star to the body
+            document.body.appendChild(star);
+
+            // Remove the star after the animation ends
+            setTimeout(() => {
+                star.remove();
+            }, 1000); // Matches the animation duration
+        }
+
+        // Attach click event to the document
+        document.addEventListener('click', createTwinklingStar);
+    </script>
+
+    <script>
+        const starsContainer = document.querySelector('.stars');
+
+        // Function to create pixel-art stars
+        for (let i = 0; i < 250; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 2}s`;
+            starsContainer.appendChild(star);
+}
+        // Function to create shooting stars
+        function createShootingStar() {
+            const shootingStar = document.createElement('div');
+            shootingStar.classList.add('shooting-star');
+
+            // Randomize position and angle
+            const startX = Math.random() * 100; // Start anywhere horizontally
+            const startY = Math.random() * 100; // Start anywhere vertically
+            const angle = Math.random() * 360; // Random shooting direction
+
+            shootingStar.style.top = `${startY}vh`;
+            shootingStar.style.left = `${startX}vw`;
+            shootingStar.style.setProperty('--angle', `${angle}deg`); // Set rotation angle
+            shootingStar.style.animationDuration = `${4 + Math.random() * 3}s`; // Random speed
+
+            document.body.appendChild(shootingStar);
+
+            // Remove the star after animation ends
+            setTimeout(() => {
+                shootingStar.remove();
+            }, 5000); // Matches the animation duration
+        }
+
+        // Generate shooting stars less frequently
+        setInterval(createShootingStar, 4000); // Less frequent, every 4 seconds
+    </script>
+</body>
+</html>

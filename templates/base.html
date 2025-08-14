@@ -5,84 +5,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Universe{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Professional font + icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-Zs+gax8s4ZHXK/3Ng6YxJ3ZXeA0PyWZ8vpM2gJ20OUkPGBh5pcpQ6UzHpud6nI+oYtYfV55pPhkeW5+npch4Bw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Light structural styling to elevate the look while keeping the theme -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #F5F5F5;
+        }
+        /* Keep star layers behind everything and full-screen */
+        .stars, .shooting-stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        /* Frosted glass nav */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            z-index: 10;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        .navbar a {
+            color: #fdfdfd;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .navbar a:hover {
+            color: #c4f1e0;
+        }
+        /* Ensure page content clears fixed nav + footer */
+        .content-wrapper {
+            padding-top: 4rem;   /* offset for nav bar */
+            padding-bottom: 3rem;/* offset for footer */
+            position: relative;
+            z-index: 1;
+        }
+        /* Frosted glass footer */
+        footer {
+            position: fixed;
+            bottom: 0; left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            padding: 0.5rem 0;
+            z-index: 10;
+        }
+        footer .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        footer .social-icons a {
+            color: #fdfdfd;
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+        footer .social-icons a:hover {
+            color: #c4f1e0;
+        }
+        /* --- Fix: make shooting-star streak connect with the head --- */
+        .shooting-star {
+            /* slightly thicker line reduces anti-aliasing gaps when rotated */
+            height: 3px; /* was 2px (in external CSS) */
+            border-radius: 3px;
+            /* brightest near the head (right side), fading into tail */
+            background: linear-gradient(to right,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.75) 55%,
+                rgba(255,255,255,0.98) 92%,
+                #ffffff 100%);
+            will-change: transform;
+        }
+        .shooting-star::after {
+            /* center the head perfectly on the streak */
+            top: 50%;
+            transform: translateY(-50%);
+            right: -4px; /* keep the glow slightly beyond the streak end */
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffffff 0%, rgba(255,255,255,0.18) 70%);
+        }
+        /* Slow down background star twinkle */
+        .star {
+            /* Lengthen the twinkle animation cycle; overrides any shorter default in style.css */
+            animation-duration: 3.5s !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Starry Background -->
     <div class="stars"></div>
     <div class="shooting-stars"></div>
 
-    <!-- Centered Home Button with Earth Emoji -->
-    <a href="{{ url_for('home') }}" class="home-button">🌍</a>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('home') }}" class="nav-logo" aria-label="Home">🌍</a></li>
+            <li><a href="{{ url_for('home') }}projects">Projects</a></li>
+            <li><a href="{{ url_for('home') }}bio">About</a></li>
+            <li><a href="/experience" aria-label="Experience">Experience</a></li>
+            <li><a href="{{ url_for('static', filename='files/hinson_resume.pdf') }}" download="hinson_resume.pdf" aria-label="Download Resume (PDF)">Resume</a></li>
+            <li><a href="{{ url_for('home') }}contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <!-- Page-Specific Content -->
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+    <div class="content-wrapper">
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
 
-    <!-- Shooting Stars Script -->
+    <!-- Footer with Social Links -->
+    <footer>
+        <div class="social-icons">
+            <!-- TODO: replace with your actual profiles -->
+            <a href="https://www.github.com/p-hinson" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/patrick-hinson-2001b6167/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:patrickjohin@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
     <!-- Click Event Script -->
     <script>
-        // Function to create a twinkling star at the cursor position
+        // Create a twinkling star at the cursor position on click
         function createTwinklingStar(event) {
-            // Create star element
             const star = document.createElement('div');
             star.classList.add('click-star');
-
-            // Position the star at the cursor
             star.style.left = `${event.clientX}px`;
             star.style.top = `${event.clientY}px`;
-
-            // Append the star to the body
             document.body.appendChild(star);
-
-            // Remove the star after the animation ends
-            setTimeout(() => {
-                star.remove();
-            }, 1000); // Matches the animation duration
+            setTimeout(() => { star.remove(); }, 1000); // matches animation duration
         }
-
-        // Attach click event to the document
         document.addEventListener('click', createTwinklingStar);
     </script>
 
+    <!-- Background starfield + shooting stars -->
     <script>
         const starsContainer = document.querySelector('.stars');
 
-        // Function to create pixel-art stars
+        // Pixel-art stars
         for (let i = 0; i < 250; i++) {
             const star = document.createElement('div');
             star.classList.add('star');
             star.style.top = `${Math.random() * 100}%`;
             star.style.left = `${Math.random() * 100}%`;
-            star.style.animationDelay = `${Math.random() * 2}s`;
+            star.style.animationDelay = `${Math.random() * 6}s`;
             starsContainer.appendChild(star);
-}
-        // Function to create shooting stars
+        }
+
+        // Shooting stars
         function createShootingStar() {
             const shootingStar = document.createElement('div');
             shootingStar.classList.add('shooting-star');
 
-            // Randomize position and angle
-            const startX = Math.random() * 100; // Start anywhere horizontally
-            const startY = Math.random() * 100; // Start anywhere vertically
-            const angle = Math.random() * 360; // Random shooting direction
+            const startX = Math.random() * 100; // anywhere horizontally
+            const startY = Math.random() * 100; // anywhere vertically
+            const angle = Math.random() * 360;  // random direction
 
             shootingStar.style.top = `${startY}vh`;
             shootingStar.style.left = `${startX}vw`;
-            shootingStar.style.setProperty('--angle', `${angle}deg`); // Set rotation angle
-            shootingStar.style.animationDuration = `${4 + Math.random() * 3}s`; // Random speed
+            shootingStar.style.setProperty('--angle', `${angle}deg`);
+            shootingStar.style.animationDuration = `${4 + Math.random() * 3}s`;
 
             document.body.appendChild(shootingStar);
 
-            // Remove the star after animation ends
-            setTimeout(() => {
-                shootingStar.remove();
-            }, 5000); // Matches the animation duration
+            setTimeout(() => { shootingStar.remove(); }, 5000);
         }
 
-        // Generate shooting stars less frequently
-        setInterval(createShootingStar, 4000); // Less frequent, every 4 seconds
+        // Less frequent: every 4s
+        setInterval(createShootingStar, 15000);
     </script>
 </body>
 </html>
