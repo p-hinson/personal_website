@@ -1,46 +1,71 @@
 {% extends "base.html" %}
-
 {% block title %}My Projects{% endblock %}
 
 {% block content %}
 <div class="container">
     <h1 class="section-title">My Projects</h1>
     <div class="projects-content">
+
         <!-- Project 1 -->
-        <section class="project">
+        <section class="project" id="project-myuscis">
             <h2>my.uscis.gov</h2>
             <p><strong>This is the website I work on in my current position, contact me offline if you would like to hear details!</strong></p>
-            <a href="https://my.uscis.gov" class="project-link" target="_blank">Link</a>
+            <a href="https://my.uscis.gov" class="project-link" target="_blank" rel="noopener">Link</a>
+            <div class="project-gallery">
+                <figure class="project-media">
+                    <img src="{{ url_for('static', filename='images/projects/myuscis.png') }}"
+                         alt="Screenshot of my.uscis.gov public interface"
+                         loading="lazy" decoding="async" width="600" height="342">
+                </figure>
+            </div>
         </section>
 
         <!-- Project 2 -->
-        <section class="project">
+        <section class="project" id="project-crispr">
             <h2>CRISPR Genomic Edit Detection</h2>
-            <p>Building off research by <a href="https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-07233-2" target="_blank" rel="noopener" style="color: #fff8e7">M. Heath Farris et. al</a>, I designed and developed an ensemble model involving an LSTM Autoencoder and statistical test to detect the presence of CRISPR edits.</p>
-            <p>I used python, (tensorflow, keras, numpy, pandas, seaborn), bash scripts, MITRE's High Performance Computing Cloud system, and ggplot2 in R for this research.</p>
+            <p>Building off research by <a href="https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-07233-2" target="_blank" rel="noopener" style="color:#fff8e7">M. Heath Farris et. al</a>, I designed and developed an ensemble model involving an LSTM Autoencoder and statistical test to detect the presence of CRISPR edits.</p>
+            <p>I used Python (TensorFlow, Keras, NumPy, pandas, seaborn), bash scripts, MITRE's High Performance Computing Cloud system, and ggplot2 in R for this research.</p>
             <p>The abstract for the poster can be found on page 1489 in the following link:</p>
-            <a href="https://www.ashg.org/wp-content/uploads/2022/09/ASHG2022-PosterAbstracts.pdf" class="project-link" target="_blank">Link</a>
+            <a href="https://www.ashg.org/wp-content/uploads/2022/09/ASHG2022-PosterAbstracts.pdf" class="project-link" target="_blank" rel="noopener">Link</a>
+            <div class="project-gallery">
+                <figure class="project-media">
+                    <img src="{{ url_for('static', filename='images/projects/crispr.png') }}"
+                         alt="CRISPR edit detection results plot"
+                         loading="lazy" decoding="async" width="300" height="400">
+                </figure>
+            </div>
         </section>
 
-        <!-- Project 2 -->
-        <section class="project">
-            <h2>Liars Dice Agents and Backrooms</h2>
-            <p>One of my favorite games to play with friends is <a href="https://en.wikipedia.org/wiki/Liar%27s_dice" target="_blank" rel="noopener" style="color: #fff8e7">Liar's Dice</a> (a.k.a Perrudo, Dudo). Liar's Dice is a fascinating game involving luck and deception, and I've been obsessed with systems underlying the game. I've done some statistical analysis of the game using R and have coded the following agents in Python to simulate the game: Random Agent (Always chooses randomly), Probabilistic Agent (Always chooses action that maximizes probability) and a Neural Network Agent that acts based on estimating reward for actions using a nerual network.</p>
-            <br>
-            <p>I have also created a Liar's Dice Backrooms webapp(Inspired by <a href="https://dreams-of-an-electric-mind.webflow.io/" target="_blank" rel="noopener" style="color: #fff8e7">Infinite Backrooms</a>) where Large Language Models play against each other with a variety of prompted strategies and personalities.</p>
-            <p>I am currently working on a website and paper with my analysis - I'll link them here when I have them!</p>
-            <p>For now, play Liar's Dice online with your friends on my friend's website <a href="http://www.liars-dice.net" target="_blank" rel="noopener" style="color: #fff8e7">liars-dice.net</a> that I am working to implement my AI's with!</p>
+        <!-- Project 3 -->
+        <section class="project" id="project-liars-dice">
+            <h2>Liar's Dice Agents and Backrooms</h2>
+            <p>One of my favorite games to play with friends is <a href="https://en.wikipedia.org/wiki/Liar%27s_dice" target="_blank" rel="noopener" style="color:#fff8e7">Liar's Dice</a> (a.k.a. Perrudo, Dudo). I've built several agents (Random, Probabilistic, and a Neural Network agent) to simulate the game and explore optimal play.</p>
+            <p>I also created a Liar's Dice Backrooms webapp (inspired by <a href="https://dreams-of-an-electric-mind.webflow.io/" target="_blank" rel="noopener" style="color:#fff8e7">Infinite Backrooms</a>) where LLMs play with different prompted strategies and personalities.</p>
+            <p>For now, play Liar's Dice online at <a href="http://www.liars-dice.net" target="_blank" rel="noopener" style="color:#fff8e7">liars-dice.net</a>. I'm working to integrate my AIs there.</p>
+            <div class="project-gallery">
+                <figure class="project-media">
+                    <img src="{{ url_for('static', filename='images/projects/liars_dice.png') }}"
+                         alt="Liar's Dice AI backrooms webapp screenshot"
+                         loading="lazy" decoding="async" width="400" height="256">
+                </figure>
+            </div>
         </section>
 
-            <!-- Rubgy Project-->
-            <section class="project">
-                <h2>Statistical Analysis of the Card Game Rugby</h2>
-                <p>I did an analysis of the card game rugby for my Computational Statistics class in Grad School. Rugby is a card game where cards are arranged face down in a diamond and a player goes row by row selecting one card from the row trying to get to the end. If the player flips a face card, they start over.</p>
-                <p>The project consists of analysis of Monte Carlo simulations of the game to determine if there is an optimal strategy. The answer is: there is! (sometimes)</p>
-                <p>The following link has a powerpoint with the findings:</p>
-                <a href="{{ url_for('static', filename='files/rugby_analysis.pptx') }}" download class="project-link">Link</a>
-            </section>
-        <!-- Add more projects as needed -->
+        <!-- Project 4 -->
+        <section class="project" id="project-rugby">
+            <h2>Statistical Analysis of the Card Game Rugby</h2>
+            <p>Monte Carlo simulation analysis of the card game Rugby to examine optimal strategies (sometimes!).</p>
+            <p>Download the presentation:</p>
+            <a href="{{ url_for('static', filename='files/rugby_analysis.pdf') }}" download class="project-link">Link</a>
+            <div class="project-gallery">
+                <figure class="project-media">
+                    <img src="{{ url_for('static', filename='images/projects/rugby.png') }}"
+                         alt="Rugby analysis visualization"
+                         loading="lazy" decoding="async" width="600" height="342">
+                </figure>
+            </div>
+        </section>
+
     </div>
 </div>
 {% endblock %}
